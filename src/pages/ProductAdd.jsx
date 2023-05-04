@@ -12,8 +12,7 @@ export default function ProductAdd() {
   } = useForm();
 
   const addProductMutation = useMutation({
-    mutationFn: (newProduct) =>
-      axios.post("http://localhost:4000/products/add", newProduct),
+    mutationFn: (newProduct) => axios.post("/products/add", newProduct),
     onSuccess: () => reset(),
   });
 
@@ -24,13 +23,13 @@ export default function ProductAdd() {
 
   return (
     <form
-      className="max-w-md lg:max-w-7xl mx-auto py-10"
+      className="max-w-md py-10 mx-auto lg:max-w-7xl"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-wrap gap-8 justify-center -mx-2">
+      <div className="flex flex-wrap justify-center gap-8 -mx-2">
         <div className="w-full px-2 mb-5 lg:mb-0">
           <input
-            className="w-full py-5 px-12 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full px-12 py-5 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             type="text"
             placeholder="Title"
             {...register("title")}
@@ -38,7 +37,7 @@ export default function ProductAdd() {
         </div>
         <div className="w-full px-2 mb-5 lg:mb-0">
           <input
-            className="w-full py-5 px-12 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full px-12 py-5 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             type="number"
             placeholder="Price"
             {...register("price", { valueAsNumber: true })}
@@ -46,14 +45,14 @@ export default function ProductAdd() {
         </div>
         <div className="w-full px-2 mb-5 lg:mb-0">
           <textarea
-            className="w-full h-80 py-5 px-12 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full px-12 py-5 text-xl border-2 border-blue-500 h-80 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             placeholder="Description"
             {...register("description")}
           />
         </div>
         <div className="w-full px-2 mb-5 lg:mb-0">
           <input
-            className="w-full py-5 px-12 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full px-12 py-5 text-xl border-2 border-blue-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             type="text"
             placeholder="Thumbnail"
             {...register("thumbnail")}
@@ -76,8 +75,8 @@ export default function ProductAdd() {
           </select>
         </div>
 
-        <div className="w-full lg:w-auto px-2">
-          <button className="block py-5 px-10 h-full w-full xl:w-auto text-xl text-white font-medium tracking-tighter font-heading bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl">
+        <div className="w-full px-2 lg:w-auto">
+          <button className="block w-full h-full px-10 py-5 text-xl font-medium tracking-tighter text-white bg-blue-500 xl:w-auto font-heading hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl">
             {addProductMutation.isLoading ? "Adding..." : "Add Product"}
           </button>
         </div>

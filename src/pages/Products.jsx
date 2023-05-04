@@ -16,11 +16,9 @@ export default function Products() {
     queryKey: ["products", { q: searchParams.get("q") }],
     queryFn: () => {
       if (searchParams.get("q")) {
-        return axios.get(
-          `http://localhost:4000/products/search?q=${searchParams.get("q")}`
-        );
+        return axios.get(`/products/search?q=${searchParams.get("q")}`);
       }
-      return axios.get("http://localhost:4000/products");
+      return axios.get("/products");
     },
     select: (res) => res.data,
   });

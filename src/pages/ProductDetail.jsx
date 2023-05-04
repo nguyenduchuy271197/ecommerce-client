@@ -11,7 +11,7 @@ export default function ProductDetail() {
     error,
   } = useQuery({
     queryKey: ["products", productId],
-    queryFn: () => axios.get(`http://localhost:4000/products/${productId}`),
+    queryFn: () => axios.get(`/products/${productId}`),
     select: (res) => res.data,
   });
 
